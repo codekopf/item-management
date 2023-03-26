@@ -1,0 +1,22 @@
+TODO
++ Add readme.md - describing the project outline and the steps to run the project. Add images and documentation.
++ Add Helm chart for the project.
++ Add Dockerfile for the project.
++ Add tests for the project - Go for 100% coverage.
++ Test Java 20
++ Use Records
++ Describe interfaces
++ Test H2 and Postgress, Liguibase
++ Generate interface documentation (ItemService)
+
+
+Notes
++ use var/val whereby possible
++ go for immutable style
+
+Others
++ var vs val ? What is the difference and why I do not see val?
+
+Time
++ 2023/03/25 - Saturday - 1.5 hours
++ 2023/03/26 - Sunday - 1 hour
