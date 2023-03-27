@@ -47,12 +47,12 @@ public final class ItemEntity {
     }
 
     public ItemEntity(final Item item) {
-        this.id = item.getId();
-        this.name = item.getName();
-        this.description = item.getDescription();
-        this.price = item.getPrice();
-        this.colour = new ColourEntity(item.getColour());
-        this.category = new CategoryEntity(item.getCategory());
+        this.id = item.id();
+        this.name = item.name();
+        this.description = item.description();
+        this.price = item.price();
+        this.colour = new ColourEntity(item.colour());
+        this.category = new CategoryEntity(item.category());
     }
 
     public Item convertToDomainObject() {

@@ -25,8 +25,8 @@ public final class ColourEntity {
     }
 
     public ColourEntity(final Colour colour) {
-        this.id = colour.getId();
-        this.name = colour.getName();
+        this.id = colour.id();
+        this.name = colour.name();
     }
 
     public Colour convertToDomainObject() {

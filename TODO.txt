@@ -16,6 +16,7 @@ Notes
 
 Others
 + var vs val ? What is the difference and why I do not see val?
++ Do I need Lombok if I use only records? What else do I use from Lombok?
 
 Time
 + 2023/03/25 - Saturday - 1.5 hours

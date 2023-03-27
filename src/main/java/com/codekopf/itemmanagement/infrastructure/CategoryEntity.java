@@ -25,8 +25,8 @@ public final class CategoryEntity {
     }
 
     public CategoryEntity(final Category category) {
-        this.id = category.getId();
-        this.name = category.getName();
+        this.id = category.id();
+        this.name = category.name();
     }
 
     public Category convertToDomainObject() {

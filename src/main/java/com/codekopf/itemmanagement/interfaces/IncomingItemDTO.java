@@ -1,22 +1,11 @@
 package com.codekopf.itemmanagement.interfaces;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.math.BigDecimal;
 
-@Getter
-@AllArgsConstructor
-public final class IncomingItemDTO {
-
-    private String name;
-
-    private String description;
-
-    private BigDecimal price;
-
-    private ColourDTO colourDTO; // TODO abuday - I need to carry only colour id here
-
-    private CategoryDTO categoryDTO;  // TODO abuday - I need to carry only category id here
+/**
+ * @param colourDTO   TODO abuday - I need to carry only colour id here
+ * @param categoryDTO TODO abuday - I need to carry only category id here
+ */
+public record IncomingItemDTO(String name, String description, BigDecimal price, ColourDTO colourDTO, CategoryDTO categoryDTO) {
 
 }

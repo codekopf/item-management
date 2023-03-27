@@ -44,11 +44,11 @@ public final class ItemController {
         // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
         val newItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
                 UUID.randomUUID(),
-                incomingItemDTO.getName(),
-                incomingItemDTO.getDescription(),
-                incomingItemDTO.getPrice(),
-                ColourDTO.convertToDomainObject(incomingItemDTO.getColourDTO()),
-                CategoryDTO.convertToDomainObject(incomingItemDTO.getCategoryDTO())
+                incomingItemDTO.name(),
+                incomingItemDTO.description(),
+                incomingItemDTO.price(),
+                ColourDTO.convertToDomainObject(incomingItemDTO.colourDTO()),
+                CategoryDTO.convertToDomainObject(incomingItemDTO.categoryDTO())
         );
         var savedItem = itemService.saveItem(newItem);
         var savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
@@ -62,12 +62,12 @@ public final class ItemController {
         var item = itemService.getItemById(id);
         if (item.isPresent()) {
             val updatedItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
-                    item.get().getId(),
-                    incomingItemDTO.getName(),
-                    incomingItemDTO.getDescription(),
-                    incomingItemDTO.getPrice(),
-                    ColourDTO.convertToDomainObject(incomingItemDTO.getColourDTO()),
-                    CategoryDTO.convertToDomainObject(incomingItemDTO.getCategoryDTO())
+                    item.get().id(),
+                    incomingItemDTO.name(),
+                    incomingItemDTO.description(),
+                    incomingItemDTO.price(),
+                    ColourDTO.convertToDomainObject(incomingItemDTO.colourDTO()),
+                    CategoryDTO.convertToDomainObject(incomingItemDTO.categoryDTO())
             );
             var savedItem = itemService.saveItem(updatedItem);
             var savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
