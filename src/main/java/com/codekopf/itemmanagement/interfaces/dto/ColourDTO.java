@@ -1,6 +1,6 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.dto;
 
-import com.codekopf.itemmanagement.domain.Colour;
+import com.codekopf.itemmanagement.domain.model.Colour;
 
 import java.util.UUID;
 

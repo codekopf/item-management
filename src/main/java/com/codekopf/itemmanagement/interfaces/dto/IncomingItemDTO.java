@@ -1,4 +1,4 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.dto;
 
 import java.math.BigDecimal;
 

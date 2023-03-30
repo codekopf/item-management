@@ -1,4 +1,6 @@
-package com.codekopf.itemmanagement.domain;
+package com.codekopf.itemmanagement.domain.service;
+
+import com.codekopf.itemmanagement.domain.model.Item;
 
 import java.util.List;
 import java.util.Optional;

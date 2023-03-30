@@ -1,7 +1,8 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.controller;
 
-import com.codekopf.itemmanagement.domain.Category;
-import com.codekopf.itemmanagement.domain.CategoryService;
+import com.codekopf.itemmanagement.domain.model.Category;
+import com.codekopf.itemmanagement.domain.service.CategoryService;
+import com.codekopf.itemmanagement.interfaces.dto.CategoryDTO;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

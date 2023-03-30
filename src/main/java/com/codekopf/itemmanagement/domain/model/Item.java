@@ -1,4 +1,4 @@
-package com.codekopf.itemmanagement.domain;
+package com.codekopf.itemmanagement.domain.model;
 
 import java.math.BigDecimal;
 import java.util.UUID;

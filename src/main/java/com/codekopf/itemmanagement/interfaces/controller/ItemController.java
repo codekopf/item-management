@@ -1,18 +1,16 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.controller;
 
-import com.codekopf.itemmanagement.domain.Item;
-import com.codekopf.itemmanagement.domain.ItemService;
+import com.codekopf.itemmanagement.domain.model.Item;
+import com.codekopf.itemmanagement.domain.service.ItemService;
 //import io.swagger.annotations.Api;
 //import io.swagger.annotations.ApiOperation;
 //import io.swagger.annotations.ApiParam;
+import com.codekopf.itemmanagement.interfaces.dto.CategoryDTO;
+import com.codekopf.itemmanagement.interfaces.dto.ColourDTO;
+import com.codekopf.itemmanagement.interfaces.dto.IncomingItemDTO;
+import com.codekopf.itemmanagement.interfaces.dto.OutgoingItemDTO;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

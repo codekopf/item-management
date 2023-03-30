@@ -1,7 +1,8 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.controller;
 
-import com.codekopf.itemmanagement.domain.Colour;
-import com.codekopf.itemmanagement.domain.ColourService;
+import com.codekopf.itemmanagement.domain.model.Colour;
+import com.codekopf.itemmanagement.domain.service.ColourService;
+import com.codekopf.itemmanagement.interfaces.dto.ColourDTO;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

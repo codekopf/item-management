@@ -1,7 +1,8 @@
-package com.codekopf.itemmanagement.domain;
+package com.codekopf.itemmanagement.domain.service;
 
-import com.codekopf.itemmanagement.infrastructure.CategoryEntity;
-import com.codekopf.itemmanagement.infrastructure.CategoryRepository;
+import com.codekopf.itemmanagement.domain.model.Category;
+import com.codekopf.itemmanagement.infrastructure.entity.CategoryEntity;
+import com.codekopf.itemmanagement.infrastructure.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

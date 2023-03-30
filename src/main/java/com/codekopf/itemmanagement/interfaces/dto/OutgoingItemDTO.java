@@ -1,6 +1,6 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.dto;
 
-import com.codekopf.itemmanagement.domain.Item;
+import com.codekopf.itemmanagement.domain.model.Item;
 
 import java.math.BigDecimal;
 import java.util.UUID;

@@ -1,7 +1,7 @@
-package com.codekopf.itemmanagement.infrastructure;
+package com.codekopf.itemmanagement.infrastructure.entity;
 
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
-import com.codekopf.itemmanagement.domain.Item;
+import com.codekopf.itemmanagement.domain.model.Item;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

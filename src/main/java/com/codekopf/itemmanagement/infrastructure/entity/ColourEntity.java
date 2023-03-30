@@ -1,7 +1,7 @@
-package com.codekopf.itemmanagement.infrastructure;
+package com.codekopf.itemmanagement.infrastructure.entity;
 
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
-import com.codekopf.itemmanagement.domain.Colour;
+import com.codekopf.itemmanagement.domain.model.Colour;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

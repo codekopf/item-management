@@ -1,6 +1,6 @@
-package com.codekopf.itemmanagement.interfaces;
+package com.codekopf.itemmanagement.interfaces.dto;
 
-import com.codekopf.itemmanagement.domain.Category;
+import com.codekopf.itemmanagement.domain.model.Category;
 
 import java.util.UUID;
 

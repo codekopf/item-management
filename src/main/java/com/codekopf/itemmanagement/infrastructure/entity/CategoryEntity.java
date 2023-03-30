@@ -1,7 +1,7 @@
-package com.codekopf.itemmanagement.infrastructure;
+package com.codekopf.itemmanagement.infrastructure.entity;
 
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
-import com.codekopf.itemmanagement.domain.Category;
+import com.codekopf.itemmanagement.domain.model.Category;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
