@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: andrej_buday
+      changes:
+        - sql: CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+  - changeSet:
+      id: 2
+      author: andrej_buday
+      changes:
+        - createTable:
+            tableName: Items
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    defaultValue: "uuid_generate_v4()"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: andrej_buday
+      changes:
+        - createTable:
+            tableName: item_colour
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    defaultValue: "uuid_generate_v4()"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 4
+      author: andrej_buday
+      changes:
+        - createTable:
+            tableName: item_category
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    defaultValue: "uuid_generate_v4()"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

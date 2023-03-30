@@ -18,14 +18,14 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "items") // TODO - fix DB
+@Table(name = "Items") // TODO - fix DB
 @EqualsAndHashCode(of = "id")
 @Getter
 @AllArgsConstructor
 public final class ItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String name;
@@ -35,11 +35,11 @@ public final class ItemEntity {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "colour_id")
+    @JoinColumn(name = "ItemColours")
     private ColourEntity colour;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "ItemCategories")
     private CategoryEntity category;
 
     @UsedByJpa // TODO not sure about this being public, should be private
