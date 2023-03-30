@@ -60,15 +60,15 @@ public final class ItemController {
                 ColourDTO.convertToDomainObject(incomingItemDTO.colourDTO()),
                 CategoryDTO.convertToDomainObject(incomingItemDTO.categoryDTO())
         );
-        var savedItem = itemService.saveItem(newItem);
-        var savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
+        val savedItem = itemService.saveItem(newItem);
+        val savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
         return ResponseEntity.status(HttpStatus.CREATED).body(savedItemDTO);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<OutgoingItemDTO> updateItem( @PathVariable UUID id, @RequestBody IncomingItemDTO incomingItemDTO) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
-        var item = itemService.getItemById(id);
+        val item = itemService.getItemById(id);
         if (item.isPresent()) {
             val updatedItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
                     item.get().id(),
@@ -78,8 +78,8 @@ public final class ItemController {
                     ColourDTO.convertToDomainObject(incomingItemDTO.colourDTO()),
                     CategoryDTO.convertToDomainObject(incomingItemDTO.categoryDTO())
             );
-            var savedItem = itemService.saveItem(updatedItem);
-            var savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
+            val savedItem = itemService.saveItem(updatedItem);
+            val savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
             return ResponseEntity.ok(savedItemDTO);
         }
         return ResponseEntity.notFound().build();
@@ -87,7 +87,7 @@ public final class ItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
-        var item = itemService.getItemById(id);
+        val item = itemService.getItemById(id);
         if (item.isPresent()) {
             itemService.deleteItem(id);
             return ResponseEntity.noContent().build();
