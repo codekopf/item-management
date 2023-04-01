@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "4b076de3-0b66-4d1c-b450-0bbdc2ab20a4",
+		"name": "Item Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2749597"
+	},
+	"item": [
+		{
+			"name": "API V1",
+			"item": [
+				{
+					"name": "Items",
+					"item": [
+						{
+							"name": "/items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/items",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/items/{ID}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/items/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"items",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/items?name={NAME}",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/items?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"items"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/items/{ID}?name={NAME}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/items/{ID}?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"items",
+										"{ID}"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/items/{ID}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/items/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"items",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Colours",
+					"item": [
+						{
+							"name": "/colours",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/colours",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"colours"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/colour/{ID}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/colours/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"colours",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/colours?name={NAME}",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/colours?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"colours"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/colours/{ID}?name={NAME}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/colours/{ID}?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"colours",
+										"{ID}"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/colours/{ID}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/colours/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"colours",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "/categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/categories",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/categories/{ID}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/categories/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/categories?name={NAME}",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/categories?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/categories/{ID}?name={NAME}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/categories/{ID}?name={NAME}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{ID}"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{NAME}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/categories/{ID}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/categories/{ID}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{ID}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
