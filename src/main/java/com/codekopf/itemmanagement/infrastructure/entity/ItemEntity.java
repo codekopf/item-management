@@ -2,23 +2,16 @@ package com.codekopf.itemmanagement.infrastructure.entity;
 
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
 import com.codekopf.itemmanagement.domain.model.Item;
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Items") // TODO - fix DB
+@Table(name = "items")
 @EqualsAndHashCode(of = "id")
 @Getter
 @AllArgsConstructor

@@ -23,3 +23,4 @@ Time
 + 2023/03/26 - Sunday - 2 hour
 + 2023/03/29 - Wednesday - 2.5 hour
 + 2023/03/30 - Thursday - 0.5 hour
++ 2023/04/01 - Friday - 1.5 hour - Running and saving colours and categories to database

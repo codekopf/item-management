@@ -2,16 +2,12 @@ package com.codekopf.itemmanagement.infrastructure.entity;
 
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
 import com.codekopf.itemmanagement.domain.model.Colour;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "colours") // TODO - fix DB
+@Table(name = "colours")
 public final class ColourEntity {
 
     @Id

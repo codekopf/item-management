@@ -2,9 +2,6 @@ package com.codekopf.itemmanagement.interfaces.controller;
 
 import com.codekopf.itemmanagement.domain.model.Item;
 import com.codekopf.itemmanagement.domain.service.ItemService;
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-//import io.swagger.annotations.ApiParam;
 import com.codekopf.itemmanagement.interfaces.dto.CategoryDTO;
 import com.codekopf.itemmanagement.interfaces.dto.ColourDTO;
 import com.codekopf.itemmanagement.interfaces.dto.IncomingItemDTO;
@@ -64,7 +61,7 @@ public final class ItemController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<OutgoingItemDTO> updateItem( @PathVariable UUID id, @RequestBody IncomingItemDTO incomingItemDTO) {
+    public ResponseEntity<OutgoingItemDTO> updateItem(@PathVariable UUID id, @RequestBody IncomingItemDTO incomingItemDTO) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
         val item = itemService.getItemById(id);
         if (item.isPresent()) {

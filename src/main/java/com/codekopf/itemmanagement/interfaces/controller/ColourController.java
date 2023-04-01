@@ -38,7 +38,7 @@ public class ColourController {
     }
 
     @PostMapping
-    public ResponseEntity<ColourDTO> createColour(@PathVariable String name) {
+    public ResponseEntity<ColourDTO> createColour(@RequestParam String name) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
         val newColour = Colour.of(UUID.randomUUID(), name);
         val savedColour = colourService.saveColour(newColour);
@@ -47,7 +47,7 @@ public class ColourController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @PathVariable String name) {
+    public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @RequestParam String name) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {

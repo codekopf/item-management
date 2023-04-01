@@ -9,7 +9,7 @@ databaseChangeLog:
       author: andrej_buday
       changes:
         - createTable:
-            tableName: Items
+            tableName: items
             columns:
               - column:
                   name: id
@@ -33,7 +33,7 @@ databaseChangeLog:
       author: andrej_buday
       changes:
         - createTable:
-            tableName: item_colour
+            tableName: colours
             columns:
               - column:
                   name: id
@@ -52,7 +52,7 @@ databaseChangeLog:
       author: andrej_buday
       changes:
         - createTable:
-            tableName: item_category
+            tableName: categories
             columns:
               - column:
                   name: id
