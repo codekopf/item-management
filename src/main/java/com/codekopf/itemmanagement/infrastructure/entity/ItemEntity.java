@@ -3,6 +3,7 @@ package com.codekopf.itemmanagement.infrastructure.entity;
 import com.codekopf.itemmanagement.configuration.UsedByJpa;
 import com.codekopf.itemmanagement.domain.model.Item;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,12 +34,12 @@ public final class ItemEntity {
 
     private BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn(name = "ItemColours")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "colour_id")
     private ColourEntity colour;
 
-    @ManyToOne
-    @JoinColumn(name = "ItemCategories")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private CategoryEntity category;
 
     @UsedByJpa // TODO not sure about this being public, should be private

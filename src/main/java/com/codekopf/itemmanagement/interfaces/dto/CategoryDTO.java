@@ -10,8 +10,4 @@ public record CategoryDTO(UUID id, String name) {
         return new CategoryDTO(category.id(), category.name());
     }
 
-    public static Category convertToDomainObject(final CategoryDTO categoryDTO) {
-        return new Category(categoryDTO.id(), categoryDTO.name());
-    }
-
 }

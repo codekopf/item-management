@@ -54,12 +54,21 @@
 							"response": []
 						},
 						{
-							"name": "/items?name={NAME}",
+							"name": "/items",
 							"request": {
 								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"\",\r\n    \"description\" : \"\",\r\n    \"price\" : \"\",\r\n    \"colourId\" : \"\",\r\n    \"categoryId\" : \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "localhost:8080/api/v1/items?name={NAME}",
+									"raw": "localhost:8080/api/v1/items",
 									"host": [
 										"localhost"
 									],
@@ -68,24 +77,18 @@
 										"api",
 										"v1",
 										"items"
-									],
-									"query": [
-										{
-											"key": "name",
-											"value": "{NAME}"
-										}
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "/items/{ID}?name={NAME}",
+							"name": "/items/{ID}",
 							"request": {
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/v1/items/{ID}?name={NAME}",
+									"raw": "localhost:8080/api/v1/items/{ID}",
 									"host": [
 										"localhost"
 									],
@@ -95,12 +98,6 @@
 										"v1",
 										"items",
 										"{ID}"
-									],
-									"query": [
-										{
-											"key": "name",
-											"value": "{NAME}"
-										}
 									]
 								}
 							},

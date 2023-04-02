@@ -1,11 +1,49 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
+      id: allow_uuid_v4_generation
       author: andrej_buday
       changes:
         - sql: CREATE EXTENSION IF NOT EXISTS "pgcrypto";
   - changeSet:
-      id: 2
+      id: add_category_and_colour_columns_and_fk_to_items
+      author: andrej_buday
+      changes:
+        - createTable:
+            tableName: colours
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    defaultValue: "uuid_generate_v4()"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: add_categories_table
+      author: andrej_buday
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    defaultValue: "uuid_generate_v4()"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: add_items_table
       author: andrej_buday
       changes:
         - createTable:
@@ -28,41 +66,31 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
-  - changeSet:
-      id: 3
-      author: andrej_buday
-      changes:
-        - createTable:
-            tableName: colours
-            columns:
               - column:
-                  name: id
+                  name: price
+                  type: numeric
+                  constraints:
+                    precision: 15
+                    scale: 2
+              - column:
+                  name: category_id
                   type: uuid
                   constraints:
-                    primaryKey: true
                     nullable: false
-                    defaultValue: "uuid_generate_v4()"
               - column:
-                  name: name
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
-  - changeSet:
-      id: 4
-      author: andrej_buday
-      changes:
-        - createTable:
-            tableName: categories
-            columns:
-              - column:
-                  name: id
+                  name: colour_id
                   type: uuid
                   constraints:
-                    primaryKey: true
                     nullable: false
-                    defaultValue: "uuid_generate_v4()"
-              - column:
-                  name: name
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: items
+            referencedColumnNames: id
+            referencedTableName: categories
+            constraintName: fk_items_category_id
+        - addForeignKeyConstraint:
+            baseColumnNames: colour_id
+            baseTableName: items
+            referencedColumnNames: id
+            referencedTableName: colours
+            constraintName: fk_items_colour_id

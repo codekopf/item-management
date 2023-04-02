@@ -10,8 +10,4 @@ public record ColourDTO(UUID id, String name) {
         return new ColourDTO(colour.id(), colour.name());
     }
 
-    public static Colour convertToDomainObject(final ColourDTO colourDTO) {
-        return new Colour(colourDTO.id(), colourDTO.name());
-    }
-
 }

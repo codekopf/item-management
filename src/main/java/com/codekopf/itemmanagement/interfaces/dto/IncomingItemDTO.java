@@ -1,11 +1,8 @@
 package com.codekopf.itemmanagement.interfaces.dto;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-/**
- * @param colourDTO   TODO abuday - I need to carry only colour id here
- * @param categoryDTO TODO abuday - I need to carry only category id here
- */
-public record IncomingItemDTO(String name, String description, BigDecimal price, ColourDTO colourDTO, CategoryDTO categoryDTO) {
+public record IncomingItemDTO(String name, String description, BigDecimal price, UUID colourId, UUID categoryId) {
 
 }

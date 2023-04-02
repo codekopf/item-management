@@ -46,7 +46,7 @@ public class ColourController {
 
     @PostMapping
     public ResponseEntity<ColourDTO> createColour(@RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
+        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
         val newColour = Colour.of(UUID.randomUUID(), name);
         val savedColour = colourService.saveColour(newColour);
         val savedColourDTO = ColourDTO.of(savedColour); // TODO What if thrown error
@@ -55,7 +55,7 @@ public class ColourController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
+        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {
             // TODO replace by method of two arguments - question lies where to place it based on its responsibility

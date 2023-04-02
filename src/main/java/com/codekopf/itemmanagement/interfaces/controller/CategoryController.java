@@ -46,7 +46,7 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
+        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
         val newCategory = Category.of(UUID.randomUUID(), name); // TODO sanitize user input? TRIM
         val savedCategory = categoryService.saveCategory(newCategory);
         val savedCategoryDTO = CategoryDTO.of(savedCategory); // TODO What if thrown error
@@ -55,7 +55,7 @@ public class CategoryController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<CategoryDTO> updateCategory(@PathVariable UUID id, @RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colour must exist and can be forged
+        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
         val category = categoryService.getCategoryById(id);
         if (category.isPresent()) {
             // TODO replace by method of two arguments - question lies where to place it based on its responsibility
