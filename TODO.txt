@@ -3,11 +3,11 @@ TODO
 + Add Helm chart for the project.
 + Add Dockerfile for the project.
 + Add tests for the project - Go for 100% coverage.
-+ Test Java 20
-+ Use Records
 + Describe interfaces
-+ Test H2 and Postgress, Liguibase
-+ Generate interface documentation (ItemService)
++ Use H2 on the integration tests
+    + Use dummy data on the integration tests
++ Generate interface documentation (ItemService) with Swagger
++ Create validation layer
 
 
 Notes
