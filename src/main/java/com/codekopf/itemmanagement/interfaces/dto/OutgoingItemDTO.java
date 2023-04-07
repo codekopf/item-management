@@ -5,7 +5,7 @@ import com.codekopf.itemmanagement.domain.model.Item;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record OutgoingItemDTO(UUID id, String name, String description, BigDecimal price, ColourDTO colourDTO, CategoryDTO category) {
+public record OutgoingItemDTO(UUID id, String name, String description, BigDecimal price, ColourDTO colourDTO, CategoryDTO categoryDTO) {
 
     public static OutgoingItemDTO of(final Item item) {
         return new OutgoingItemDTO(
