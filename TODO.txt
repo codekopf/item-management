@@ -4,10 +4,11 @@ TODO
 + Add Dockerfile for the project.
 + Add tests for the project - Go for 100% coverage.
 + Describe interfaces
-+ Use H2 on the integration tests
-    + Use dummy data on the integration tests
++ Use dummy data on the integration tests
 + Generate interface documentation (ItemService) with Swagger
 + Create validation layer
++ Check GitHub actions results
++ Maybe use XML instead of YAML for Liquibase
 
 
 Notes
@@ -25,3 +26,5 @@ Time
 + 2023/03/30 - Thursday - 0.5 hour
 + 2023/04/01 - Friday - 1.5 hour - Running and saving colours and categories to database
 + 2023/04/02 - Saturday - 1.5 hour - Fixing item. Item is now savable to database.
++ 2023/04/07 - Friday - 2.5 hour - DTO and model classes tests, GitHub workflows
++ 2023/04/07 - Saturday - 3.5 hour - H2 integration with PostgreSQL

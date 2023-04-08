@@ -8,16 +8,31 @@ This project aims for Java 20.
 
 ## How to run project locally?
 
-Create a PostgreSQL container with 
+Create a PostgreSQL container with: 
 
-docker run --name my-postgres-container \
--e POSTGRES_USER=myuser \
--e POSTGRES_PASSWORD=mypassword \
+```
+$ docker run --name my-postgres-container \
+-e POSTGRES_USER=postgres \
+-e POSTGRES_PASSWORD=password \
 -e POSTGRES_DB=mydatabase \
 -p 5432:5432 \
 -d postgres
+```
 
 This should create PostgreSQL container with new database "mydatabase". You can change database name, user and password in application.properties file.
+
+Create a H2 container with:
+
+```
+$ docker run --name=MyH2Instance \
+-v /path/to/local/data_dir:/opt/h2-data \
+-e H2_OPTIONS=-ifNotExists \
+-p 1521:1521 \
+-p 81:81 \
+-d oscarfonts/h2
+```
+
+This should create H2 database for testing purposes.
 
 ## API documentation
 

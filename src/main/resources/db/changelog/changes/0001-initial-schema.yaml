@@ -2,6 +2,10 @@ databaseChangeLog:
   - changeSet:
       id: allow_uuid_v4_generation
       author: andrej_buday
+      preConditions:
+        - onFail: MARK_RAN
+        - dbms:
+            type: postgresql
       changes:
         - sql: CREATE EXTENSION IF NOT EXISTS "pgcrypto";
   - changeSet:
@@ -17,12 +21,29 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    defaultValue: "uuid_generate_v4()"
               - column:
                   name: name
                   type: varchar(255)
                   constraints:
                     nullable: false
+        - preConditions:
+            - onFail: MARK_RAN
+            - dbms:
+                type: postgresql
+          changes:
+            - addDefaultValue:
+                tableName: colours
+                columnName: id
+                defaultValue: "uuid_generate_v4()"
+        - preConditions:
+            - onFail: MARK_RAN
+            - dbms:
+                type: h2
+          changes:
+            - addDefaultValue:
+                tableName: colours
+                columnName: id
+                defaultValue: "RANDOM_UUID()"
   - changeSet:
       id: add_categories_table
       author: andrej_buday
@@ -36,12 +57,29 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    defaultValue: "uuid_generate_v4()"
               - column:
                   name: name
                   type: varchar(255)
                   constraints:
                     nullable: false
+        - preConditions:
+          - onFail: MARK_RAN
+          - dbms:
+              type: postgresql
+          changes:
+            - addDefaultValue:
+                tableName: categories
+                columnName: id
+                defaultValue: "uuid_generate_v4()"
+        - preConditions:
+          - onFail: MARK_RAN
+          - dbms:
+              type: h2
+          changes:
+            - addDefaultValue:
+                tableName: categories
+                columnName: id
+                defaultValue: "RANDOM_UUID()"
   - changeSet:
       id: add_items_table
       author: andrej_buday
@@ -55,7 +93,6 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    defaultValue: "uuid_generate_v4()"
               - column:
                   name: name
                   type: varchar(255)
@@ -94,3 +131,21 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: colours
             constraintName: fk_items_colour_id
+        - preConditions:
+          - onFail: MARK_RAN
+          - dbms:
+              type: postgresql
+          changes:
+            - addDefaultValue:
+                tableName: items
+                columnName: id
+                defaultValue: "uuid_generate_v4()"
+        - preConditions:
+          - onFail: MARK_RAN
+          - dbms:
+              type: h2
+          changes:
+            - addDefaultValue:
+                tableName: items
+                columnName: id
+                defaultValue: "RANDOM_UUID()"
