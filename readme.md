@@ -21,7 +21,7 @@ $ docker run --name my-postgres-container \
 
 This should create PostgreSQL container with new database "mydatabase". You can change database name, user and password in application.properties file.
 
-Create a H2 container with:
+Create an H2 container with:
 
 ```
 $ docker run --name=MyH2Instance \
