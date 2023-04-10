@@ -1,5 +1,4 @@
 TODO
-+ Add readme.md - describing the project outline and the steps to run the project. Add images and documentation.
 + Add Helm chart for the project.
 + Add Dockerfile for the project.
 + Add tests for the project - Go for 100% coverage.
@@ -9,7 +8,7 @@ TODO
 + Create validation layer
 + Check GitHub actions results
 + Maybe use XML instead of YAML for Liquibase
-
++ Add better project documentation. Add info, how to run project, how to run Docker locally or deploy to AWS/Azure. Add images and documentation.
 
 Notes
 + use var/val whereby possible
@@ -28,3 +27,4 @@ Time
 + 2023/04/02 - Saturday - 1.5 hour - Fixing item. Item is now savable to database.
 + 2023/04/07 - Friday - 2.5 hour - DTO and model classes tests, GitHub workflows
 + 2023/04/07 - Saturday - 3.5 hour - H2 integration with PostgreSQL
++ 2023/04/10 - Monday - 0.5 - Added original task description to the readme.md
