@@ -28,7 +28,7 @@ The aim is to use the current fort-end but split the monolith system into multip
 + Create domain model of Items.
 + Create database model of Items.
 
-![original assignment model](https://github.com/codekopf/item-management/documentation/img/original_assignment_model.png)
+![original assignment model](https://github.com/codekopf/item-management/blob/main/documentation/img/original_assignment_model.png)
 
 ## REST API
 
