@@ -28,3 +28,4 @@ Time
 + 2023/04/07 - Friday - 2.5 hour - DTO and model classes tests, GitHub workflows
 + 2023/04/07 - Saturday - 3.5 hour - H2 integration with PostgreSQL
 + 2023/04/10 - Monday - 0.5 - Added original task description to the readme.md
++ 2023/04/10 - Monday - 1 - Added integration tests for Category and Colour
