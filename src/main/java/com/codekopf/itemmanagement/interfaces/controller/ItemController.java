@@ -72,7 +72,7 @@ public final class ItemController {
         }
 
         val newItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
-                UUID.randomUUID(),
+                null,
                 incomingItemDTO.name(),
                 incomingItemDTO.description(),
                 incomingItemDTO.price(),

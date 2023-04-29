@@ -47,7 +47,7 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestParam String name) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
-        val newCategory = Category.of(UUID.randomUUID(), name); // TODO sanitize user input? TRIM
+        val newCategory = Category.of(null, name); // TODO sanitize user input? TRIM
         val savedCategory = categoryService.saveCategory(newCategory);
         val savedCategoryDTO = CategoryDTO.of(savedCategory); // TODO What if thrown error
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCategoryDTO);

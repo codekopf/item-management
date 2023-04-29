@@ -3,14 +3,16 @@ package com.codekopf.itemmanagement.infrastructure.repository;
 import com.codekopf.itemmanagement.domain.model.Category;
 import com.codekopf.itemmanagement.infrastructure.entity.CategoryEntity;
 import lombok.val;
-import org.junit.After;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
+@Tag("integration")
 @SpringBootTest
 public class CategoryRepositoryIntegrationTest {
 
@@ -23,8 +25,8 @@ public class CategoryRepositoryIntegrationTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @After
-    public void cleanUp() {
+    @BeforeEach
+    public void setUp() {
         // Delete all records from the database
         categoryRepository.deleteAll();
     }
@@ -38,8 +40,27 @@ public class CategoryRepositoryIntegrationTest {
         val savedCategoryEntity = categoryRepository.save(categoryEntity);
         // Assert
         val savedCategory = savedCategoryEntity.convertToDomainObject();
-        Assertions.assertEquals(category.id(), savedCategory.id());
+        Assertions.assertNotNull(savedCategory.id());
+        Assertions.assertNotEquals(category.id(), savedCategory.id());
         Assertions.assertEquals(category.name(), savedCategory.name());
+    }
+
+    @Test
+    public void testUpdate() {
+        // Arrange
+        val category = new Category(null, CATEGORY_NAME);
+        val categoryEntity = new CategoryEntity(category);
+        val savedCategoryEntity = categoryRepository.save(categoryEntity);
+
+        val savedCategory = savedCategoryEntity.convertToDomainObject();
+        val otherCategory = new Category(savedCategory.id(), OTHER_CATEGORY_NAME);
+        val otherCategoryEntity = new CategoryEntity(otherCategory);
+        // Act
+        val savedOtherCategoryEntity = categoryRepository.save(otherCategoryEntity);
+        // Assert
+        val savedOtherCategory = savedOtherCategoryEntity.convertToDomainObject();
+        Assertions.assertEquals(savedOtherCategory.id(), savedCategory.id());
+        Assertions.assertEquals(savedOtherCategory.name(), OTHER_CATEGORY_NAME);
     }
 
     @Test
@@ -47,15 +68,17 @@ public class CategoryRepositoryIntegrationTest {
         // Arrange
         val category = new Category(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
         val categoryEntity = new CategoryEntity(category);
-        categoryRepository.save(categoryEntity);
+
+        val savedCategoryEntity = categoryRepository.save(categoryEntity);
+        val savedCategory = savedCategoryEntity.convertToDomainObject();
         // Act
-        val maybeCategoryEntity = categoryRepository.findById(category.id());
+        val maybeCategoryEntity = categoryRepository.findById(savedCategory.id());
         // Assert
         Assertions.assertTrue(maybeCategoryEntity.isPresent());
         val retrievedCategoryEntity = maybeCategoryEntity.get();
         val retrievedCategory = retrievedCategoryEntity.convertToDomainObject();
-        Assertions.assertEquals(category.id(), retrievedCategory.id());
-        Assertions.assertEquals(category.name(), retrievedCategory.name());
+        Assertions.assertEquals(savedCategory.id(), retrievedCategory.id());
+        Assertions.assertEquals(savedCategory.name(), retrievedCategory.name());
     }
 
     @Test

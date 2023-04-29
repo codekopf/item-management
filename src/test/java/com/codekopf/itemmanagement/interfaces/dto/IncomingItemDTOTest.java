@@ -2,6 +2,7 @@ package com.codekopf.itemmanagement.interfaces.dto;
 
 import lombok.val;
 import org.junit.Test;
+import org.junit.jupiter.api.Tag;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -9,6 +10,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("unit")
 public class IncomingItemDTOTest {
 
     public static final String ITEM_NAME = "item name";

@@ -2,12 +2,14 @@ package com.codekopf.itemmanagement.domain.model;
 
 import lombok.val;
 import org.junit.Test;
+import org.junit.jupiter.api.Tag;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("unit")
 public class ColourTest {
 
     public static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();

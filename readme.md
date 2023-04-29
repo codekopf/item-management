@@ -78,3 +78,17 @@ You can find a Swagger UI at http://localhost:8080/swagger-ui/index.html
 
 ## Issue debugger
 If you have problems with Liquibase, use "logging.level.liquibase=DEBUG" in application.properties file.
+
+## Running tests
+
+To run only the unit tests, you can use the following command:
+
+`mvn test -Dgroups=unit`
+
+And to run only the integration tests, you can use the following command:
+
+`mvn test -Dgroups=integration`
+
+If you want to run both the unit and integration tests, you can use the following command:
+
+`mvn test -Dgroups=unit,integration`

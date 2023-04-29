@@ -5,6 +5,7 @@ import com.codekopf.itemmanagement.domain.model.Colour;
 import com.codekopf.itemmanagement.domain.model.Item;
 import lombok.val;
 import org.junit.Test;
+import org.junit.jupiter.api.Tag;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("unit")
 public class OutgoingItemDTOTest {
 
     public static final UUID ITEM_RANDOM_UUID = UUID.randomUUID();

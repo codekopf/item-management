@@ -3,12 +3,14 @@ package com.codekopf.itemmanagement.domain.model;
 import com.codekopf.itemmanagement.interfaces.dto.CategoryDTO;
 import lombok.val;
 import org.junit.Test;
+import org.junit.jupiter.api.Tag;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("unit")
 public class CategoryTest {
 
     public static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
