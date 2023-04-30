@@ -1,6 +1,5 @@
 TODO
 + Add Helm chart for the project.
-+ Add Dockerfile for the project.
 + Add tests for the project - Go for 100% coverage.
 + Describe interfaces
 + Use dummy data on the integration tests
@@ -29,3 +28,5 @@ Time
 + 2023/04/07 - Saturday - 3.5 hour - H2 integration with PostgreSQL
 + 2023/04/10 - Monday - 0.5 - Added original task description to the readme.md
 + 2023/04/10 - Monday - 1 - Added integration tests for Category and Colour
++ 2023/04/29 - Saturday - 2 - Fixing tests
++ 2023/04/29 - Saturday - 4 - Creating Docker file and fixing database creation
