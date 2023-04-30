@@ -36,4 +36,5 @@ public final class ColourServiceImpl implements ColourService {
     public void deleteColour(final UUID id) {
         colourRepository.deleteById(id);
     }
+
 }

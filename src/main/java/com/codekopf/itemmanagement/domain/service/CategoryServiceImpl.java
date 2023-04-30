@@ -36,4 +36,5 @@ public final class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(final UUID id) {
         categoryRepository.deleteById(id);
     }
+
 }

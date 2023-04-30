@@ -47,6 +47,7 @@ public class ColourController {
     @PostMapping
     public ResponseEntity<ColourDTO> createColour(@RequestParam String name) {
         // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
+
         val newColour = Colour.of(null, name);
         val savedColour = colourService.saveColour(newColour);
         val savedColourDTO = ColourDTO.of(savedColour); // TODO What if thrown error
@@ -76,4 +77,5 @@ public class ColourController {
         }
         return ResponseEntity.notFound().build();
     }
+
 }

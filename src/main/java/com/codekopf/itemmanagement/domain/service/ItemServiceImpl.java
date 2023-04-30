@@ -36,4 +36,5 @@ public final class ItemServiceImpl implements ItemService {
     public void deleteItem(final UUID id) {
         itemRepository.deleteById(id);
     }
+
 }
