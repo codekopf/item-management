@@ -95,4 +95,13 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: colours
             constraintName: fk_items_colour_id
-
+        - createIndex:
+            tableName: items
+            columns:
+              - column:
+                  name: category_id
+        - createIndex:
+            tableName: items
+            columns:
+              - column:
+                  name: colour_id
