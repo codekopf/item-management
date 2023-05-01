@@ -20,19 +20,23 @@ public final class ColourServiceImpl implements ColourService {
         this.colourRepository = colourRepository;
     }
 
+    @Override
     public List<Colour> getAllColours() {
         return colourRepository.findAll().stream().map(ColourEntity::convertToDomainObject).toList();
     }
 
+    @Override
     public Optional<Colour> getColourById(final UUID id) {
         return colourRepository.findById(id).map(ColourEntity::convertToDomainObject);
     }
 
     // TODO add description - performs save and merge(update) if (id will work)
+    @Override
     public Colour saveColour(final Colour colour) {
         return colourRepository.save(new ColourEntity(colour)).convertToDomainObject();
     }
 
+    @Override
     public void deleteColour(final UUID id) {
         colourRepository.deleteById(id);
     }

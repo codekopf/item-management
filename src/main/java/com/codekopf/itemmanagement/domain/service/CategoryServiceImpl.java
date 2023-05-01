@@ -20,19 +20,23 @@ public final class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
+    @Override
     public List<Category> getAllCategories() {
         return categoryRepository.findAll().stream().map(CategoryEntity::convertToDomainObject).toList();
     }
 
+    @Override
     public Optional<Category> getCategoryById(final UUID id) {
         return categoryRepository.findById(id).map(CategoryEntity::convertToDomainObject);
     }
 
     // TODO add description - performs save and merge(update) if (id will work)
+    @Override
     public Category saveCategory(final Category category) {
         return categoryRepository.save(new CategoryEntity(category)).convertToDomainObject();
     }
 
+    @Override
     public void deleteCategory(final UUID id) {
         categoryRepository.deleteById(id);
     }

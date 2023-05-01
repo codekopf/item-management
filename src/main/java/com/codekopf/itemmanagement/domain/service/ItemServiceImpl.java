@@ -20,19 +20,23 @@ public final class ItemServiceImpl implements ItemService {
         this.itemRepository = itemRepository;
     }
 
+    @Override
     public List<Item> getAllItems() {
         return itemRepository.findAll().stream().map(ItemEntity::convertToDomainObject).toList();
     }
 
+    @Override
     public Optional<Item> getItemById(final UUID id) {
         return itemRepository.findById(id).map(ItemEntity::convertToDomainObject);
     }
 
     // TODO add description - performs save and merge(update) if (id will work)
+    @Override
     public Item saveItem(final Item item) {
         return itemRepository.save(new ItemEntity(item)).convertToDomainObject();
     }
 
+    @Override
     public void deleteItem(final UUID id) {
         itemRepository.deleteById(id);
     }
