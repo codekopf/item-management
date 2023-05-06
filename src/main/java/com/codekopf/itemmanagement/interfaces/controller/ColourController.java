@@ -53,7 +53,7 @@ public class ColourController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<ColourDTO> getColourById(@PathVariable UUID id) {
-        log.info("Get colour by id: {}", id);
+        log.info("Get colour by id {}", id);
         return colourService
                 .getColourById(id)
                 .map(colour -> {
@@ -89,7 +89,7 @@ public class ColourController {
     @PatchMapping("/{id}")
     public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and colourDTO must exist and can be forged
-        log.info("Update colour with id: {}", id);
+        log.info("Update colour with id {}", id);
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {
             // TODO replace by method of two arguments - question lies where to place it based on its responsibility
@@ -100,7 +100,7 @@ public class ColourController {
             val savedColourDTO = ColourDTO.of(saveColour); // TODO What if thrown error
             return ResponseEntity.ok(savedColourDTO);
         }
-        log.info("Colour with id: {} does not exist", id);
+        log.info("Colour with id {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 
@@ -111,14 +111,14 @@ public class ColourController {
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteColour(@PathVariable UUID id) {
-        log.info("Delete colour by id: {}", id);
+        log.info("Delete colour by id {}", id);
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {
             colourService.deleteColour(id);
-            log.info("Colour with id: {} is deleted", id);
+            log.info("Colour with id {} is deleted", id);
             return ResponseEntity.noContent().build();
         }
-        log.info("Colour with id: {} does not exist", id);
+        log.info("Colour with id {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 

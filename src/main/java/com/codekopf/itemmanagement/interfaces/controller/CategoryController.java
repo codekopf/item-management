@@ -53,7 +53,7 @@ public class CategoryController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable UUID id) {
-        log.info("Get category by id: {}", id);
+        log.info("Get category by id {}", id);
         return categoryService
                 .getCategoryById(id)
                 .map(category -> {
@@ -89,7 +89,7 @@ public class CategoryController {
     @PatchMapping("/{id}")
     public ResponseEntity<CategoryDTO> updateCategory(@PathVariable UUID id, @Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and categoryDTO must exist and can be forged
-        log.info("Update category with id: {}", id);
+        log.info("Update category with id {}", id);
         val category = categoryService.getCategoryById(id);
         if (category.isPresent()) {
             // TODO replace by method of two arguments - question lies where to place it based on its responsibility
@@ -100,7 +100,7 @@ public class CategoryController {
             val savedCategoryDTO = CategoryDTO.of(saveCategory); // TODO What if thrown error
             return ResponseEntity.ok(savedCategoryDTO);
         }
-        log.info("Category with id: {} does not exist", id);
+        log.info("Category with id {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 
@@ -111,14 +111,14 @@ public class CategoryController {
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable UUID id) {
-        log.info("Delete category by id: {}", id);
+        log.info("Delete category by id {}", id);
         val category = categoryService.getCategoryById(id);
         if (category.isPresent()) {
             categoryService.deleteCategory(id);
-            log.info("Category with id: {} is deleted", id);
+            log.info("Category with id {} is deleted", id);
             return ResponseEntity.noContent().build();
         }
-        log.info("Category with id: {} does not exist", id);
+        log.info("Category with id {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 
