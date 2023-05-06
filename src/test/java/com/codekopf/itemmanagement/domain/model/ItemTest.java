@@ -45,7 +45,7 @@ public class ItemTest {
     }
 
     @Test
-    public void testStaticConstructor() {
+    public void testStaticItemConstructor() {
         // Arrange
         // Act
         val item = Item.of(ITEM_RANDOM_UUID, ITEM_NAME, ITEM_DESCRIPTION, PRICE, ITEM_COLOUR, ITEM_CATEGORY);

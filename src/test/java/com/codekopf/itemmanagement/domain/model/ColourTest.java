@@ -28,7 +28,7 @@ public class ColourTest {
     }
 
     @Test
-    public void testStaticConstructor() {
+    public void testStaticColourConstructor() {
         // Arrange
         // Act
         val colour = Colour.of(COLOUR_RANDOM_UUID, COLOUR_NAME);

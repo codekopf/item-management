@@ -29,7 +29,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void testStaticConstructor() {
+    public void testStaticCategoryConstructor() {
         // Arrange
         // Act
         val category = Category.of(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
