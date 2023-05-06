@@ -16,20 +16,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("unit")
 public class OutgoingItemDTOTest {
 
-    public static final UUID ITEM_RANDOM_UUID = UUID.randomUUID();
-    public static final String ITEM_NAME = "item name";
-    public static final String ITEM_DESCRIPTION = "item description";
-    public static final BigDecimal PRICE = new BigDecimal("100.00");
+    private static final UUID ITEM_RANDOM_UUID = UUID.randomUUID();
+    private static final String ITEM_NAME = "item name";
+    private static final String ITEM_DESCRIPTION = "item description";
+    private static final BigDecimal PRICE = new BigDecimal("100.00");
 
-    public static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
-    public static final String COLOUR_NAME = "colour name";
-    public static final Colour ITEM_COLOUR = new Colour(COLOUR_RANDOM_UUID, COLOUR_NAME);
-    public static final ColourDTO COLOUR_DTO = new ColourDTO(COLOUR_RANDOM_UUID, COLOUR_NAME);
+    private static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
+    private static final String COLOUR_NAME = "colour name";
+    private static final Colour ITEM_COLOUR = new Colour(COLOUR_RANDOM_UUID, COLOUR_NAME);
+    private static final ColourDTO COLOUR_DTO = new ColourDTO(COLOUR_RANDOM_UUID, COLOUR_NAME);
 
-    public static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
-    public static final String CATEGORY_NAME = "new category";
-    public static final Category ITEM_CATEGORY = new Category(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
-    public static final CategoryDTO CATEGORY_DTO = new CategoryDTO(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
+    private static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
+    private static final String CATEGORY_NAME = "new category";
+    private static final Category ITEM_CATEGORY = new Category(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
+    private static final CategoryDTO CATEGORY_DTO = new CategoryDTO(CATEGORY_RANDOM_UUID, CATEGORY_NAME);
 
     @Test
     public void testOutgoingItemDTOConstructor() {

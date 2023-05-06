@@ -16,10 +16,10 @@ import java.util.UUID;
 @SpringBootTest
 public class ColourRepositoryIntegrationTest {
 
-    public static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
-    public static final String COLOUR_NAME = "new colour";
+    private static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
+    private static final String COLOUR_NAME = "new colour";
 
-    public static final UUID OTHER_COLOUR_RANDOM_UUID = UUID.randomUUID();
+    private static final UUID OTHER_COLOUR_RANDOM_UUID = UUID.randomUUID();
     public static final String OTHER_COLOUR_NAME = "other new colour";
 
     @Autowired

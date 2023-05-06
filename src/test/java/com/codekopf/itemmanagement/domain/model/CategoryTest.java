@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("unit")
 public class CategoryTest {
 
-    public static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
-    public static final String CATEGORY_NAME = "new category";
+    private static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
+    private static final String CATEGORY_NAME = "new category";
 
     @Test
     public void testCategoryConstructor() {

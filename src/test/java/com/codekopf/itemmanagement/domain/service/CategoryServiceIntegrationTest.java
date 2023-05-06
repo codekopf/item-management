@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class CategoryServiceIntegrationTest {
 
-    public static final String CATEGORY_NAME = "new category";
+    private static final String CATEGORY_NAME = "new category";
 
     @Autowired
     private CategoryService categoryService;

@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("unit")
 public class IncomingItemDTOTest {
 
-    public static final String ITEM_NAME = "item name";
-    public static final String ITEM_DESCRIPTION = "item description";
-    public static final BigDecimal PRICE = new BigDecimal("100.00");
-    public static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
-    public static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
+    private static final String ITEM_NAME = "item name";
+    private static final String ITEM_DESCRIPTION = "item description";
+    private static final BigDecimal PRICE = new BigDecimal("100.00");
+    private static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
+    private static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
 
     @Test
     public void testIncomingItemDTOConstructor() {

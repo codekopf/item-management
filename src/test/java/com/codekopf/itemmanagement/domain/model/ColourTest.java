@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("unit")
 public class ColourTest {
 
-    public static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
-    public static final String COLOUR_NAME = "colour name";
+    private static final UUID COLOUR_RANDOM_UUID = UUID.randomUUID();
+    private static final String COLOUR_NAME = "colour name";
 
     @Test
     public void testColourConstructor() {

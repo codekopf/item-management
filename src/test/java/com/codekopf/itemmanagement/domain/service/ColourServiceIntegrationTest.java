@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ColourServiceIntegrationTest {
 
-    public static final String COLOUR_NAME = "new colour";
+    private static final String COLOUR_NAME = "new colour";
 
     @Autowired
     private ColourService colourService;

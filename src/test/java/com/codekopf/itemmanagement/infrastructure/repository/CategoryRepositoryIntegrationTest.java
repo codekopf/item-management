@@ -16,11 +16,11 @@ import java.util.UUID;
 @SpringBootTest
 public class CategoryRepositoryIntegrationTest {
 
-    public static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
-    public static final String CATEGORY_NAME = "new category";
+    private static final UUID CATEGORY_RANDOM_UUID = UUID.randomUUID();
+    private static final String CATEGORY_NAME = "new category";
 
-    public static final UUID OTHER_CATEGORY_RANDOM_UUID = UUID.randomUUID();
-    public static final String OTHER_CATEGORY_NAME = "other new category";
+    private static final UUID OTHER_CATEGORY_RANDOM_UUID = UUID.randomUUID();
+    private static final String OTHER_CATEGORY_NAME = "other new category";
 
     @Autowired
     private CategoryRepository categoryRepository;
