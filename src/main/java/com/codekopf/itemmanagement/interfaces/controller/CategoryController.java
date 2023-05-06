@@ -3,6 +3,11 @@ package com.codekopf.itemmanagement.interfaces.controller;
 import com.codekopf.itemmanagement.domain.model.Category;
 import com.codekopf.itemmanagement.domain.service.CategoryService;
 import com.codekopf.itemmanagement.interfaces.dto.CategoryDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.Nonnull;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,11 +37,20 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    @Operation(summary = "Get all categories")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All categories are returned")
+    })
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories().stream().map(CategoryDTO::of).collect(Collectors.toList()));
     }
 
+    @Operation(summary = "Get category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category with id is returned"),
+            @ApiResponse(responseCode = "404", description = "Category with id does not exist")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable UUID id) {
         log.info("Get category by id: {}", id);
@@ -46,6 +60,10 @@ public class CategoryController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Creates new category")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "New category is created")
+    })
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and categoryDTO must exist and can be forged
@@ -57,6 +75,11 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCategoryDTO);
     }
 
+    @Operation(summary = "Update category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Category is updated"),
+            @ApiResponse(responseCode = "404", description = "Category with id does not exist")
+    })
     @PatchMapping("/{id}")
     public ResponseEntity<CategoryDTO> updateCategory(@PathVariable UUID id, @Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and categoryDTO must exist and can be forged
@@ -75,6 +98,11 @@ public class CategoryController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Delete category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Category is deleted"),
+            @ApiResponse(responseCode = "404", description = "Category with id does not exist")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable UUID id) {
         log.info("Delete category by id: {}", id);

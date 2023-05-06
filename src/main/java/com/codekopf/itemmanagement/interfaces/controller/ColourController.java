@@ -3,6 +3,11 @@ package com.codekopf.itemmanagement.interfaces.controller;
 import com.codekopf.itemmanagement.domain.model.Colour;
 import com.codekopf.itemmanagement.domain.service.ColourService;
 import com.codekopf.itemmanagement.interfaces.dto.ColourDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.annotation.Nonnull;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,11 +37,20 @@ public class ColourController {
         this.colourService = colourService;
     }
 
+    @Operation(summary = "Get all colours")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All colours are returned")
+    })
     @GetMapping
     public ResponseEntity<List<ColourDTO>> getAllColours() {
         return ResponseEntity.ok(colourService.getAllColours().stream().map(ColourDTO::of).collect(Collectors.toList()));
     }
 
+    @Operation(summary = "Get colour by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Colour with id is returned"),
+            @ApiResponse(responseCode = "404", description = "Colour with id does not exist")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<ColourDTO> getColourById(@PathVariable UUID id) {
         log.info("Get colour by id: {}", id);
@@ -46,6 +60,10 @@ public class ColourController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Creates new colour")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "New colour is created")
+    })
     @PostMapping
     public ResponseEntity<ColourDTO> createColour(@Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and colourDTO must exist and can be forged
@@ -57,6 +75,11 @@ public class ColourController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedColourDTO);
     }
 
+    @Operation(summary = "Update colour by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Colour is updated"),
+            @ApiResponse(responseCode = "404", description = "Colour with id does not exist")
+    })
     @PatchMapping("/{id}")
     public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @Nonnull @RequestParam(required = true) String name) {
         // TODO name still need validation - e.g. id of category and colourDTO must exist and can be forged
@@ -74,6 +97,11 @@ public class ColourController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Delete colour by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Colour is deleted"),
+            @ApiResponse(responseCode = "404", description = "Colour with id does not exist")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteColour(@PathVariable UUID id) {
         log.info("Delete colour by id: {}", id);

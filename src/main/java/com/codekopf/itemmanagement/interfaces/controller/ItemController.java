@@ -7,7 +7,11 @@ import com.codekopf.itemmanagement.domain.service.ItemService;
 import com.codekopf.itemmanagement.interfaces.dto.IncomingItemDTO;
 import com.codekopf.itemmanagement.interfaces.dto.OutgoingItemDTO;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,11 +48,20 @@ public final class ItemController {
         this.categoryService = categoryService;
     }
 
+    @Operation(summary = "Get all items")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All items are returned")
+    })
     @GetMapping
     public ResponseEntity<List<OutgoingItemDTO>> getAllItems() {
         return ResponseEntity.ok(itemService.getAllItems().stream().map(OutgoingItemDTO::of).collect(Collectors.toList()));
     }
 
+    @Operation(summary = "Get item by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Item with id is returned"),
+            @ApiResponse(responseCode = "404", description = "Item with id does not exist")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<OutgoingItemDTO> getItemById(@PathVariable UUID id) {
         log.info("Get item by id: {}", id);
@@ -58,6 +71,11 @@ public final class ItemController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Creates new item")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "New item is created")
+            // TODO add response catching exception
+    })
     @RequestMapping(
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE) // TODO This is different than the rest of the code. Unify!
@@ -92,6 +110,12 @@ public final class ItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedItemDTO);
     }
 
+    @Operation(summary = "Update item by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Item is updated"),
+            // TODO add response catching exception
+            @ApiResponse(responseCode = "404", description = "Item with id does not exist")
+    })
     @PatchMapping("/{id}")
     public ResponseEntity<OutgoingItemDTO> updateItem(@PathVariable UUID id, @RequestBody IncomingItemDTO incomingItemDTO) {
 
@@ -129,6 +153,11 @@ public final class ItemController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Delete item by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Item is deleted"),
+            @ApiResponse(responseCode = "404", description = "Item with id does not exist")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
         log.info("Delete item by id: {}", id);
