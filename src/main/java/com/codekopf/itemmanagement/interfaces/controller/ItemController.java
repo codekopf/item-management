@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @OpenAPIDefinition(info = @Info(title = "Item Management API", version = "1.0", description = "Item Management description")) // TODO - is it in correct place?
 @RestController
 @RequestMapping("/api/v1/items")
@@ -50,6 +51,7 @@ public final class ItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OutgoingItemDTO> getItemById(@PathVariable UUID id) {
+        log.info("Get item by id: {}", id);
         return itemService
                 .getItemById(id)
                 .map(item -> ResponseEntity.ok(OutgoingItemDTO.of(item)))
@@ -64,11 +66,15 @@ public final class ItemController {
         // TODO Create better validation
         val colour = colourService.getColourById(incomingItemDTO.colourId());
         if (colour.isEmpty()) {
-            throw new RuntimeException("Colour with id: " + incomingItemDTO.colourId() + " does not exist!");
+            val message = "Colour with id: " + incomingItemDTO.colourId() + " does not exist!";
+            log.error(message);
+            throw new RuntimeException(message);
         }
         val category = categoryService.getCategoryById(incomingItemDTO.categoryId());
         if (category.isEmpty()) {
-            throw new RuntimeException("Category with id: " + incomingItemDTO.categoryId() + " does not exist!");
+            val message = "Category with id: " + incomingItemDTO.categoryId() + " does not exist!";
+            log.error(message);
+            throw new RuntimeException(message);
         }
 
         val newItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
@@ -79,7 +85,9 @@ public final class ItemController {
                 colour.get(),
                 category.get()
         );
+        log.info("Create new item: {}", newItem);
         val savedItem = itemService.saveItem(newItem);
+        log.info("Saved item: {}", savedItem);
         val savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
         return ResponseEntity.status(HttpStatus.CREATED).body(savedItemDTO);
     }
@@ -90,13 +98,18 @@ public final class ItemController {
         // TODO Create better validation
         val colour = colourService.getColourById(incomingItemDTO.colourId());
         if (colour.isEmpty()) {
-            throw new RuntimeException("Colour with id: " + incomingItemDTO.colourId() + " does not exist!");
+            val message = "Colour with id: " + incomingItemDTO.colourId() + " does not exist!";
+            log.error(message);
+            throw new RuntimeException(message);
         }
         val category = categoryService.getCategoryById(incomingItemDTO.categoryId());
         if (category.isEmpty()) {
-            throw new RuntimeException("Category with id: " + incomingItemDTO.categoryId() + " does not exist!");
+            val message = "Category with id: " + incomingItemDTO.categoryId() + " does not exist!";
+            log.error(message);
+            throw new RuntimeException(message);
         }
 
+        log.info("Update item with id: {}", id);
         val item = itemService.getItemById(id);
         if (item.isPresent()) {
             val updatedItem = Item.of( // TODO replace by method of two arguments - question lies where to place it based on its responsibility
@@ -107,7 +120,9 @@ public final class ItemController {
                     colour.get(),
                     category.get()
             );
+            log.info("Update: {}", updatedItem);
             val savedItem = itemService.saveItem(updatedItem);
+            log.info("Saved item: {}", savedItem);
             val savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
             return ResponseEntity.ok(savedItemDTO);
         }
@@ -116,11 +131,14 @@ public final class ItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
+        log.info("Delete item by id: {}", id);
         val item = itemService.getItemById(id);
         if (item.isPresent()) {
             itemService.deleteItem(id);
+            log.info("Item with id: {} is deleted", id);
             return ResponseEntity.noContent().build();
         }
+        log.info("Item with id: {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 

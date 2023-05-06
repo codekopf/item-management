@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/colours")
 public class ColourController {
@@ -38,6 +39,7 @@ public class ColourController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ColourDTO> getColourById(@PathVariable UUID id) {
+        log.info("Get colour by id: {}", id);
         return colourService
                 .getColourById(id)
                 .map(colour -> ResponseEntity.ok(ColourDTO.of(colour)))
@@ -45,23 +47,27 @@ public class ColourController {
     }
 
     @PostMapping
-    public ResponseEntity<ColourDTO> createColour(@RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
-
+    public ResponseEntity<ColourDTO> createColour(@Nonnull @RequestParam(required = true) String name) {
+        // TODO name still need validation - e.g. id of category and colourDTO must exist and can be forged
+        log.info("Create new colour: {}", name);
         val newColour = Colour.of(null, name);
         val savedColour = colourService.saveColour(newColour);
+        log.info("Saved colour: {}", savedColour);
         val savedColourDTO = ColourDTO.of(savedColour); // TODO What if thrown error
         return ResponseEntity.status(HttpStatus.CREATED).body(savedColourDTO);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @RequestParam String name) {
-        // TODO incomingItemDTO still need validation - e.g. id of category and colourDTO must exist and can be forged
+    public ResponseEntity<ColourDTO> updateColour(@PathVariable UUID id, @Nonnull @RequestParam(required = true) String name) {
+        // TODO name still need validation - e.g. id of category and colourDTO must exist and can be forged
+        log.info("Update colour with id: {}", id);
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {
             // TODO replace by method of two arguments - question lies where to place it based on its responsibility
             val updatedColour = Colour.of(colour.get().id(), name); // TODO sanitize user input?
+            log.info("Update: {}", updatedColour);
             val saveColour = colourService.saveColour(updatedColour);
+            log.info("Saved colour: {}", saveColour);
             val savedColourDTO = ColourDTO.of(saveColour); // TODO What if thrown error
             return ResponseEntity.ok(savedColourDTO);
         }
@@ -70,11 +76,14 @@ public class ColourController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteColour(@PathVariable UUID id) {
+        log.info("Delete colour by id: {}", id);
         val colour = colourService.getColourById(id);
         if (colour.isPresent()) {
             colourService.deleteColour(id);
+            log.info("Colour with id: {} is deleted", id);
             return ResponseEntity.noContent().build();
         }
+        log.info("Colour with id: {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 
