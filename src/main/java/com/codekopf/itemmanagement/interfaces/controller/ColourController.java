@@ -94,6 +94,7 @@ public class ColourController {
             val savedColourDTO = ColourDTO.of(saveColour); // TODO What if thrown error
             return ResponseEntity.ok(savedColourDTO);
         }
+        log.info("Colour with id: {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 

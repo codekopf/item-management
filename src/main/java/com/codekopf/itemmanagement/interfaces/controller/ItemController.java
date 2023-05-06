@@ -150,6 +150,7 @@ public final class ItemController {
             val savedItemDTO = OutgoingItemDTO.of(savedItem); // TODO What if thrown error
             return ResponseEntity.ok(savedItemDTO);
         }
+        log.info("Item with id: {} does not exist", id);
         return ResponseEntity.notFound().build();
     }
 
