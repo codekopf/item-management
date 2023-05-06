@@ -67,8 +67,14 @@ public final class ItemController {
         log.info("Get item by id: {}", id);
         return itemService
                 .getItemById(id)
-                .map(item -> ResponseEntity.ok(OutgoingItemDTO.of(item)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .map(item -> {
+                    log.info("Item found");
+                    return ResponseEntity.ok(OutgoingItemDTO.of(item));
+                })
+                .orElseGet(() -> {
+                    log.info("Item with id {} not found", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 
     @Operation(summary = "Creates new item")

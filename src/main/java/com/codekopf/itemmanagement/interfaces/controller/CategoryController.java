@@ -56,8 +56,14 @@ public class CategoryController {
         log.info("Get category by id: {}", id);
         return categoryService
                 .getCategoryById(id)
-                .map(category -> ResponseEntity.ok(CategoryDTO.of(category)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .map(category -> {
+                    log.info("Category found");
+                    return ResponseEntity.ok(CategoryDTO.of(category));
+                })
+                .orElseGet(() -> {
+                    log.info("Category with id {} not found", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 
     @Operation(summary = "Creates new category")

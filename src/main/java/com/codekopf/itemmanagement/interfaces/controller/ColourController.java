@@ -56,8 +56,14 @@ public class ColourController {
         log.info("Get colour by id: {}", id);
         return colourService
                 .getColourById(id)
-                .map(colour -> ResponseEntity.ok(ColourDTO.of(colour)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .map(colour -> {
+                    log.info("Colour found");
+                    return ResponseEntity.ok(ColourDTO.of(colour));
+                })
+                .orElseGet(() -> {
+                    log.info("Colour with id {} not found", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 
     @Operation(summary = "Creates new colour")
